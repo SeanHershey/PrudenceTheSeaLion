@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://dep3rtrv4hosj"]
+
+[ext_resource type="Texture2D" uid="uid://d2ebm7bgh0lj5" path="res://graphics/PWSOY5s.png" id="1_0m4q4"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_cn4o0"]
+[ext_resource type="AudioStream" uid="uid://cqr0yugcvc8yd" path="res://audio/splash.mp3" id="3_56tam"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx2am"]
+atlas = ExtResource("1_0m4q4")
+region = Rect2(528, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7srq"]
+atlas = ExtResource("1_0m4q4")
+region = Rect2(528, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie4i8"]
+atlas = ExtResource("1_0m4q4")
+region = Rect2(432, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi5t7"]
+atlas = ExtResource("1_0m4q4")
+region = Rect2(480, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55ftm"]
+atlas = ExtResource("1_0m4q4")
+region = Rect2(528, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db05f"]
+atlas = ExtResource("1_0m4q4")
+region = Rect2(432, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrh82"]
+atlas = ExtResource("1_0m4q4")
+region = Rect2(480, 288, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dep5v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx2am")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7srq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie4i8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi5t7")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55ftm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db05f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrh82")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vcac"]
+radius = 13.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(513, 298)
+script = ExtResource("1_cn4o0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_dep5v")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2, 19)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_3vcac")
+
+[node name="SplashPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_56tam")
