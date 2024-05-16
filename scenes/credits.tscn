@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx3vkw1x4a6h6"]
+
+[ext_resource type="Script" path="res://scripts/credits.gd" id="1_kubsc"]
+[ext_resource type="Theme" uid="uid://cy5putkuovkwj" path="res://graphics/FlatUI/kenneyUI.tres" id="2_0mlbb"]
+[ext_resource type="Theme" uid="uid://8gmxul007m31" path="res://graphics/FlatUI/kenneyUI-yellow.tres" id="2_5worf"]
+[ext_resource type="AudioStream" uid="uid://bmg2sr1ai87ya" path="res://audio/Sulyya-BirdLine.mp3" id="2_ov4qb"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kubsc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -151.0
+offset_top = -127.0
+offset_right = 1306.0
+offset_bottom = 777.0
+color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 509.0
+offset_right = 749.0
+offset_bottom = 588.0
+theme = ExtResource("2_0mlbb")
+text = "Back"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -395.5
+offset_top = -77.0
+offset_right = 395.5
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = ExtResource("2_5worf")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]Art - Pixel Dailies and Seraphtide
+Music - Sulyya
+UI Theme - Azagaya"
+selection_enabled = true
+
+[node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ov4qb")
+volume_db = -14.991
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

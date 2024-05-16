@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl5minh78dj3m"]
+
+[ext_resource type="Script" path="res://scripts/cone.gd" id="1_o65ow"]
+[ext_resource type="Texture2D" uid="uid://dxdxleen6hqqx" path="res://graphics/Vet-01.png" id="2_1dism"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8bch8"]
+friction = 0.75
+bounce = 3.23
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w8lan"]
+radius = 28.0179
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m6q0"]
+atlas = ExtResource("2_1dism")
+region = Rect2(2000, 0, 1000, 1004)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1dca"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m6q0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Ball" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(-1, 0)
+mass = 0.54
+physics_material_override = SubResource("PhysicsMaterial_8bch8")
+center_of_mass_mode = 1
+script = ExtResource("1_o65ow")
+
+[node name="BallCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_w8lan")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D/BallCollisionShape2D"]
+texture_filter = 1
+position = Vector2(26, -26)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_t1dca")

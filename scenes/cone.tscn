@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvs6hn286jykm"]
+
+[ext_resource type="Texture2D" uid="uid://dxdxleen6hqqx" path="res://graphics/Vet-01.png" id="1_j078o"]
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_nxwl8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j4bnk"]
+friction = 0.75
+bounce = 0.78
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_41o15"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30eq5"]
+atlas = ExtResource("1_j078o")
+region = Rect2(1000, 1004, 1000, 1004)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eje81"]
+atlas = ExtResource("1_j078o")
+region = Rect2(2000, 1004, 1000, 1004)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clhey"]
+atlas = ExtResource("1_j078o")
+region = Rect2(1000, 1004, 1000, 1004)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k3xxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30eq5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eje81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clhey")
+}],
+"loop": true,
+"name": &"shine",
+"speed": 1.0
+}]
+
+[node name="Cone" type="Node2D"]
+
+[node name="ConeBody" type="RigidBody2D" parent="."]
+position = Vector2(-1, 0)
+mass = 1.2
+physics_material_override = SubResource("PhysicsMaterial_j4bnk")
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 5)
+script = ExtResource("1_nxwl8")
+
+[node name="ConeCollisionShape2D" type="CollisionShape2D" parent="ConeBody"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_41o15")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ConeBody/ConeCollisionShape2D"]
+texture_filter = 1
+position = Vector2(22, -78)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_k3xxm")
+frame_progress = 0.388369

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://baiqib4wghm37"]
+
+[ext_resource type="Texture2D" uid="uid://dxdxleen6hqqx" path="res://graphics/Vet-01.png" id="1_6sd2j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcqn4"]
+atlas = ExtResource("1_6sd2j")
+region = Rect2(0, 0, 1000, 1004)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04cea"]
+atlas = ExtResource("1_6sd2j")
+region = Rect2(1000, 0, 1000, 1004)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6hxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcqn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04cea")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="security" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(63, -9)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_x6hxm")
+autoplay = "default"
+frame_progress = 0.756549

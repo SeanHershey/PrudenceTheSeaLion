@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://vfcv6cxcedyr"]
+
+[ext_resource type="Script" path="res://scripts/gameover.gd" id="1_0hhqi"]
+[ext_resource type="AudioStream" uid="uid://bmg2sr1ai87ya" path="res://audio/Sulyya-BirdLine.mp3" id="2_gbbs2"]
+[ext_resource type="Theme" uid="uid://cy5putkuovkwj" path="res://graphics/FlatUI/kenneyUI.tres" id="2_pxa6u"]
+[ext_resource type="AudioStream" uid="uid://s7r43shlgwgb" path="res://audio/death.mp3" id="4_3vry5"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0hhqi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -90.0
+offset_top = -81.0
+offset_right = 1254.0
+offset_bottom = 733.0
+color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -59.0
+offset_right = 288.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = ExtResource("2_pxa6u")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]You were spotted!
+Game Over"
+selection_enabled = true
+
+[node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gbbs2")
+volume_db = -14.991
+
+[node name="DeathPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3vry5")
+volume_db = -18.088
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 508.0
+offset_right = 758.0
+offset_bottom = 593.0
+theme = ExtResource("2_pxa6u")
+text = "Main Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
